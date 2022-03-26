@@ -46,24 +46,8 @@ public class BinaryTree {
     }
 
     public boolean contains(int element) {
-
         if (root == null) return false;
-        if (root.getElement() == element) return true;
-        Queue<BinaryTreeNode> q = new LinkedList<>();
-        q.offer(root);
-
-        while (!q.isEmpty()) {
-            BinaryTreeNode node = q.poll();
-            if (node.getElement() == element) return true;
-            if (node.getLeftChild() != null) {
-                q.offer(node.getLeftChild());
-            }
-
-            if (node.getRightChild() != null) {
-                q.offer(node.getRightChild());
-            }
-        }
-        return false;
+        return inOrder().contains(element);
     }
 
     public ArrayList<Integer> inOrder() {
