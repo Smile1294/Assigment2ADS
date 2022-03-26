@@ -14,26 +14,7 @@ public class BinarySearchTree extends BinaryTree{
 
     public int findMin(){
         if (isEmpty()) return 0;
-
-        Queue<BinaryTreeNode> q = new LinkedList<>();
-        q.offer(root);
-
-        ArrayList<Integer> valueList = new ArrayList<>();
-
-        while (!q.isEmpty()) {
-
-            BinaryTreeNode node = q.poll();
-
-            valueList.add(node.getElement());
-
-            if (node.getLeftChild() != null) {
-                q.offer(node.getLeftChild());
-            }
-            if (node.getRightChild() != null) {
-                q.offer(node.getRightChild());
-            }
-        }
-        return Collections.min(valueList);
+        return inOrder().get(0);
     }
 
     //this is used for the removeElement method
@@ -55,26 +36,7 @@ public class BinarySearchTree extends BinaryTree{
 
     public int findMax(){
         if (isEmpty()) return 0;
-
-        Queue<BinaryTreeNode> q = new LinkedList<>();
-        q.offer(root);
-
-        ArrayList<Integer> valueList = new ArrayList<>();
-
-        while (!q.isEmpty()) {
-
-            BinaryTreeNode node = q.poll();
-
-            valueList.add(node.getElement());
-
-            if (node.getLeftChild() != null) {
-                q.offer(node.getLeftChild());
-            }
-            if (node.getRightChild() != null) {
-                q.offer(node.getRightChild());
-            }
-        }
-        return Collections.max(valueList);
+        return inOrder().get(inOrder().size()-1);
     }
 
     public void removeElement(int element)
